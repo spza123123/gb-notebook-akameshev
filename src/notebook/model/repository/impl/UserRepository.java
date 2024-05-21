@@ -1,6 +1,6 @@
 package notebook.model.repository.impl;
 
-import notebook.model.dao.impl.FileOperation;
+
 import notebook.util.DBConnector;
 import notebook.util.UserValidator;
 import notebook.util.mapper.impl.UserMapper;
@@ -14,16 +14,18 @@ import java.util.Optional;
 
 public class UserRepository implements GBRepository {
     private final UserMapper mapper;
-    private final FileOperation operation;
+//    private final FileOperation operation;
+    private final String path;
 
-    public UserRepository(FileOperation operation) {
+    public UserRepository(String path) {
         this.mapper = new UserMapper();
-        this.operation = operation;
+//        this.operation = operation;
+        this.path = path;
     }
 
     @Override
     public List<User> findAll() {
-        List<String> lines = operation.readAll();
+        List<String> lines = readAll();
         List<User> users = new ArrayList<>();
         for (String line : lines) {
             users.add(mapper.toOutput(line));
@@ -97,7 +99,7 @@ public class UserRepository implements GBRepository {
         for (User u : users) {
             lines.add(mapper.toInput(u));
         }
-        operation.saveAll(lines);
+        saveAll(lines);
     }
 
     public List<String> readAll() {
