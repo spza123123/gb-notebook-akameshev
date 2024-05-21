@@ -1,4 +1,0 @@
-2,Alisher,Kameshev,456
-3,Alina,Kamesheva,147
-4,ANuar,Kameshev,753
-5,Galina,Ivanova,741
