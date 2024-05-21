@@ -40,6 +40,9 @@ public class UserView {
                     userController.updateUser(userId, createUser());
                 case LIST:
                     System.out.println(userController.readAll());
+                case DELETE:
+                    String idForDelete = prompt("Enter user id: ");
+                    userController.deleteById(idForDelete);
             }
         }
     }

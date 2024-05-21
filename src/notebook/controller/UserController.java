@@ -37,4 +37,7 @@ public class UserController {
 
         return repository.findAll();
     }
+    public void deleteById(String id){
+      repository.delete(Long.parseLong(id));
+    }
 }
